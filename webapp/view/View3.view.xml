@@ -1,0 +1,66 @@
+<mvc:View
+    controllerName="com.northwind.app.northwindapp.controller.View3"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    
+    <Page
+        id="ordersPage"
+        title="Customer Orders"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+
+        <List
+            id="ordersList"
+            busy="{view>/busy}"
+            headerText="All Orders"
+            items="{
+                path: '/Orders',
+                sorter: {
+                    path: 'OrderDate',
+                    descending: true
+                },
+                parameters: {
+                    expand: 'Order_Details'
+                }
+            }">
+            
+            <items>
+                <ObjectListItem
+                    id="ordersListItemTpl"
+                    type="Active"
+                    press=".onPressOrderItem"
+                    title="Order: {OrderID}"
+                    intro="Customer: {CustomerID}">
+
+                    <firstStatus>
+                        <ObjectStatus
+                            id="itemCountStatus"
+                            text="{
+                                path: 'Order_Details',
+                                formatter: '.formatter.calculateItemCount'
+                            }" />
+                    </firstStatus>
+                    
+                    <attributes>
+                        <ObjectAttribute 
+                            id="orderDateAttribute"
+                            title="Order Date"
+                            text="{
+                                path: 'OrderDate',
+                                type: 'sap.ui.model.type.Date',
+                                formatOptions: {
+                                    style: 'medium'
+                                }
+                            }" />
+                        <ObjectAttribute
+                            id="shipCountryAttribute"
+                            title="Ship To"
+                            text="{ShipCountry}" />
+                    </attributes>
+
+                </ObjectListItem>
+            </items>
+        </List>
+    </Page>
+</mvc:View>

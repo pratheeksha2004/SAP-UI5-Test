@@ -1,0 +1,67 @@
+<mvc:View
+    controllerName="com.northwind.app.northwindapp.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    
+    <Page
+        id="employeesPage"
+        title="Employees List"
+        showNavButton="true"
+        navButtonPress=".onNavBack">
+        
+        <Table
+            id="employeesTable"
+            inset="false"
+            busy="{view>/busy}"
+            items="{
+                path: '/Employees',
+                sorter: {
+                    path: 'LastName'
+                },
+                parameters: {
+                    select: 'FirstName,LastName,Title,City'
+                }
+            }">
+            
+            <headerToolbar>
+                <Toolbar id="employeesToolbar">
+                    <Title id="employeesTitle" text="All Employees"/>
+                    <ToolbarSpacer id="toolbarSpacer" />
+                    <SearchField
+                        id="searchField"
+                        width="50%"
+                        placeholder="Filter by First or Last Name..."
+                        search=".onFilterEmployees"
+                        liveChange=".onFilterEmployees" />
+                </Toolbar>
+            </headerToolbar>
+
+            <columns>
+                <Column id="firstNameCol">
+                    <Text id="firstNameColHeader" text="First Name" />
+                </Column>
+                <Column id="lastNameCol">
+                    <Text id="lastNameColHeader" text="Last Name" />
+                </Column>
+                <Column id="titleCol">
+                    <Text id="titleColHeader" text="Title" />
+                </Column>
+                <Column id="cityCol" minScreenWidth="Tablet" demandPopin="true">
+                    <Text id="cityColHeader" text="City" />
+                </Column>
+            </columns>
+
+            <items>
+                <!-- This ColumnListItem serves as the template for each row -->
+                <ColumnListItem id="employeesListItemTpl" type="Inactive">
+                    <cells>
+                        <Text id="firstNameCell" text="{FirstName}" />
+                        <Text id="lastNameCell" text="{LastName}" />
+                        <Text id="titleCell" text="{Title}" />
+                        <Text id="cityCell" text="{City}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>
