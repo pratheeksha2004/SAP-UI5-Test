@@ -1,0 +1,49 @@
+{
+    "products": [
+      {
+        "ProductID": 1,
+        "Name": "Chai",
+        "Model": "CH-1001",
+        "Price": "18.00",
+        "CurrencyCode": "USD",
+        "Stock": 39,
+        "Description": "A classic aromatic tea blend."
+      },
+      {
+        "ProductID": 2,
+        "Name": "Chang",
+        "Model": "CG-2011",
+        "Price": "19.00",
+        "CurrencyCode": "USD",
+        "Stock": 8,
+        "Description": "A premium light beer."
+      },
+      {
+        "ProductID": 3,
+        "Name": "Aniseed Syrup",
+        "Model": "AS-3021",
+        "Price": "10.00",
+        "CurrencyCode": "USD",
+        "Stock": 113,
+        "Description": "Sweet syrup for beverages and desserts."
+      },
+      {
+        "ProductID": 4,
+        "Name": "Chef Anton's Cajun Seasoning",
+        "Model": "CS-4031",
+        "Price": "22.00",
+        "CurrencyCode": "USD",
+        "Stock": 5,
+        "Description": "A spicy mix for all your Cajun dishes."
+      },
+      {
+        "ProductID": 5,
+        "Name": "Grandma's Boysenberry Spread",
+        "Model": "BS-5041",
+        "Price": "25.00",
+        "CurrencyCode": "USD",
+        "Stock": 120,
+        "Description": "Delicious fruit spread for toast and pastries."
+      }
+    ]
+  }

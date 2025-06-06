@@ -3,19 +3,16 @@ sap.ui.define([], function () {
 
     return {
         /**
-         * Calculates the number of items in an order.
-         * Handles the OData V2 data structure where expanded items are in a 'results' array.
-         * @param {object} oOrderDetails The Order_Details navigation property from the V2 OData service
-         * @returns {string} A string like "x Items"
+         * Determines the highlight state of a list item based on stock quantity.
+         * @param {int} iStock The stock quantity of the product.
+         * @returns {sap.ui.core.ValueState} "Error" for low stock, "None" otherwise.
          */
-        calculateItemCount: function (oOrderDetails) {
-            // For OData V2, the array of items is nested inside the 'results' property.
-            if (oOrderDetails && oOrderDetails.results) {
-                return oOrderDetails.results.length + " Items";
+        stockState: function (iStock) {
+            if (iStock < 10) {
+                return "Error"; // "Error" state gives a red background
+            } else {
+                return "None";
             }
-            
-            // If there are no details or the input is invalid, return "0 Items".
-            return "0 Items";
         }
     };
 });

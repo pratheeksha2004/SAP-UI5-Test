@@ -1,0 +1,5 @@
+git clone [repository_url] - Copies a remote repository to our local machine.
+git add [file_name] - Stages a file, preparing it to be included in the next commit.
+git commit -m "[commit_message]" - Saves our staged changes to the local repository history.
+git push - Pushes your committed changes from our local repository to a remote repository.
+git pull - Fetches changes from the remote repository and merges them into our current branch.

@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog
+        id="productDetailsDialog"
+        title="Product Details">
+        <content>
+            <f:SimpleForm id="detailsForm" editable="false" layout="ResponsiveGridLayout">
+                <f:content>
+                    <Label id="nameLabel" text="Product Name"/>
+                    <Text id="nameText" text="{products>Name}"/>
+                    
+                    <Label id="modelLabel" text="Model"/>
+                    <Text id="modelText" text="{products>Model}"/>
+
+                    <Label id="priceLabel" text="Price"/>
+                    <Text id="priceText" text="{products>Price} {products>CurrencyCode}"/>
+
+                    <Label id="stockLabel" text="Stock"/>
+                    <Text id="stockText" text="{products>Stock}"/>
+
+                    <Label id="descriptionLabel" text="Description"/>
+                    <Text id="descriptionText" text="{products>Description}"/>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <endButton>
+            <Button id="closeDialogButton" text="Close" press=".onCloseDialog" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

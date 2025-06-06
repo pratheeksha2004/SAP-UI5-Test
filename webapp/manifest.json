@@ -1,156 +1,77 @@
 {
-  "_version": "1.65.0",
-  "sap.app": {
-      "id": "com.northwind.app.northwindapp",
-      "type": "application",
-      "i18n": "i18n/i18n.properties",
-      "applicationVersion": {
-          "version": "0.0.1"
-      },
-      "title": "{{appTitle}}",
-      "description": "{{appDescription}}",
-      "resources": "resources.json",
-      "sourceTemplate": {
-          "id": "@sap/generator-fiori:basic",
-          "version": "1.17.6",
-          "toolsId": "35255fb6-ceb8-4df2-a04d-4a910bdeff57"
-      },
-      "dataSources": {
-          "mainService": {
-              "uri": "/V2/Northwind/Northwind.svc/",
-              "type": "OData",
-              "settings": {
-                  "annotations": [],
-                  "localUri": "localService/mainService/metadata.xml",
-                  "odataVersion": "2.0"
-              }
-          }
-      },
-      "crossNavigation": {
-          "inbounds": {
-              "northwindDataDisplay-display": {
-                  "semanticObject": "northwindDataDisplay",
-                  "action": "display",
-                  "title": "{{northwindDataDisplay-display.flpTitle}}",
-                  "subTitle": "{{northwindDataDisplay-display.flpSubtitle}}",
-                  "signature": {
-                      "parameters": {},
-                      "additionalParameters": "allowed"
-                  }
-              }
-          }
-      }
-  },
-  "sap.ui": {
-      "technology": "UI5",
-      "icons": {
-          "icon": "",
-          "favIcon": "",
-          "phone": "",
-          "phone@2": "",
-          "tablet": "",
-          "tablet@2": ""
-      },
-      "deviceTypes": {
-          "desktop": true,
-          "tablet": true,
-          "phone": true
-      }
-  },
-  "sap.ui5": {
-      "flexEnabled": true,
-      "dependencies": {
-          "minUI5Version": "1.136.1",
-          "libs": {
-              "sap.m": {},
-              "sap.ui.core": {},
-              "sap.ui.layout": {}
-          }
-      },
-      "contentDensities": {
-          "compact": true,
-          "cozy": true
-      },
-      "models": {
-          "i18n": {
-              "type": "sap.ui.model.resource.ResourceModel",
-              "settings": {
-                  "bundleName": "com.northwind.app.northwindapp.i18n.i18n"
-              }
-          },
-          "": {
-              "dataSource": "mainService",
-              "preload": true,
-              "settings": {
-                  "defaultBindingMode": "TwoWay",
-                  "useBatch": true,
-                  "json": true
-              }
-          }
-      },
-      "resources": {
-          "css": [
-              {
-                  "uri": "css/style.css"
-              }
-          ]
-      },
-      "routing": {
-          "config": {
-              "routerClass": "sap.m.routing.Router",
-              "viewType": "XML",
-              "async": true,
-              "viewPath": "com.northwind.app.northwindapp.view",
-              "controlId": "app",
-              "controlAggregation": "pages",
-              "clearControlAggregation": false
-          },
-          "routes": [
-              {
-                  "name": "RouteView1",
-                  "pattern": "",
-                  "target": [
-                      "TargetView1"
-                  ]
-              },
-              {
-                  "name": "RouteEmployees",
-                  "pattern": "employees",
-                  "target": [
-                      "TargetView2"
-                  ]
-              },
-              {
-                  "name": "RouteOrders",
-                  "pattern": "orders",
-                  "target": [
-                      "TargetView3"
-                  ]
-              }
-          ],
-          "targets": {
-              "TargetView1": {
-                  "viewType": "XML",
-                  "viewName": "View1",
-                  "viewId": "view1"
-              },
-              "TargetView2": {
-                  "viewType": "XML",
-                  "viewName": "View2",
-                  "viewId": "view2"
-              },
-              "TargetView3": {
-                  "viewType": "XML",
-                  "viewName": "View3",
-                  "viewId": "view3"
-              }
-          }
-      },
-      "rootView": {
-          "viewName": "com.northwind.app.northwindapp.view.App",
-          "type": "XML",
-          "async": true,
-          "id": "App"
-      }
-  }
+    "_version": "1.65.0",
+    "sap.app": {
+        "id": "com.northwind.app.northwindapp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "Product List App"
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.60.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.northwind.app.northwindapp.i18n.i18n"
+                }
+            },
+            "products": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/products.json"
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.northwind.app.northwindapp.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteView1",
+                    "pattern": "",
+                    "target": "TargetView1"
+                }
+            ],
+            "targets": {
+                "TargetView1": {
+                    "viewName": "View1",
+                    "viewId": "view1"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.northwind.app.northwindapp.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
 }

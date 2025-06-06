@@ -1,45 +1,39 @@
 <mvc:View
     controllerName="com.northwind.app.northwindapp.controller.View1"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    
-    <Page id="mainPage" title="Northwind Dashboard">
+    xmlns="sap.m"
+    id="view1">
+    <Page id="page" title="Product List">
         <content>
-            <!-- A FlexBox with a stable ID -->
-            <FlexBox
-                id="dashboardFlexBox"
-                height="100%"
-                alignItems="Center"
-                justifyContent="Center"
-                wrap="Wrap"
-                class="sapUiSmallMargin">
-
-                
-                <GenericTile
-                    id="employeesTile"
-                    class="sapUiTinyMargin"
-                    header="Employees"
-                    subheader="View All Employees"
-                    press=".onNavToEmployees">
-                    <TileContent id="employeesTileContent">
-                        <ImageContent id="employeesTileImage" src="sap-icon://employee-lookup" />
-                    </TileContent>
-                </GenericTile>
-
-                <!-- The GenericTile for Orders with a stable ID -->
-                <GenericTile
-                    id="ordersTile"
-                    class="sapUiTinyMargin"
-                    header="Orders"
-                    subheader="View Customer Orders"
-                    press=".onNavToOrders">
-                    <TileContent id="ordersTileContent">
-                        <ImageContent id="ordersTileImage" src="sap-icon://sales-order" />
-                    </TileContent>
-                </GenericTile>
-
-            </FlexBox>
+            <List
+                id="productsList"
+                headerText="Products"
+                items="{products>/products}">
+                <items>
+                    <ObjectListItem
+                        id="productListItem"
+                        title="{products>Name}"
+                        number="{
+                            parts: ['products>Price', 'products>CurrencyCode'],
+                            type: 'sap.ui.model.type.Currency',
+                            formatOptions: {
+                                showMeasure: false
+                            }
+                        }"
+                        numberUnit="{products>CurrencyCode}"
+                        type="Navigation"
+                        press=".onListItemPress"
+                        highlight="{
+                            path: 'products>Stock',
+                            formatter: '.formatter.stockState'
+                        }">
+                        <attributes>
+                            <ObjectAttribute id="modelAttribute" text="Model: {products>Model}" />
+                            <ObjectAttribute id="stockAttribute" text="Stock Quantity: {products>Stock}" />
+                        </attributes>
+                    </ObjectListItem>
+                </items>
+            </List>
         </content>
     </Page>
-    
 </mvc:View>
